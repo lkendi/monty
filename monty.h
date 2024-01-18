@@ -47,7 +47,8 @@ void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
-void monty(FILE *file);
+void monty(FILE *file, char *argument);
+char *_strdup(const char *str);
 
 
 /*GLOBAL VARIABLES*/

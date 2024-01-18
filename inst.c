@@ -34,3 +34,16 @@ instruction_t *get_instruction(char *opcode,
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 	exit(EXIT_FAILURE);
 }
+
+
+char *_strdup(const char *str)
+{
+	size_t len = strlen(str) + 1;
+	char *copy = malloc(len);
+	if (copy == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	return memcpy(copy, str, len);
+}
