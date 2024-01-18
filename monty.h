@@ -40,7 +40,8 @@ typedef struct instruction_s
 
 
 /*FUNCTION PROTOTYPES*/
-instruction_t *get_instruction(char *opcode, char *argument, unsigned int line_number);
+instruction_t *get_instruction(char *opcode,
+				char *argument, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);

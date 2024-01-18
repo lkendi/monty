@@ -3,9 +3,8 @@
 /**
  * push - adds an element to the top of the stack
  * @stack: pointer to the top of the stack
- * @num: argument to push onto the stack
  * @line_number: current line number in Monty file
- * Return: element at the top of the stack
+ * Return: nothing
  */
 void push(stack_t **stack, unsigned int line_number)
 {
@@ -15,10 +14,9 @@ void push(stack_t **stack, unsigned int line_number)
 
 	arg = strtok(NULL, " \t\n");
 	printf("Push Arg: %s\n", arg);
-	if (arg == NULL || isdigit(*arg) != 0 && arg[0] != '-')
+	if ((arg == NULL) || ((isdigit(*arg) != 0) && (arg[0] != '-')))
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		// free stuff
 		exit(EXIT_FAILURE);
 	}
 
@@ -28,7 +26,6 @@ void push(stack_t **stack, unsigned int line_number)
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		// free
 		exit(EXIT_FAILURE);
 	}
 
@@ -40,14 +37,14 @@ void push(stack_t **stack, unsigned int line_number)
 		(*stack)->prev = new;
 
 	*stack = new;
-	printf("Top: %d\n",(*stack)->n);
+	printf("Top: %d\n", (*stack)->n);
 
 }
 
 /**
  * pall - prints all the nodes of the stack
  * @stack: pointer to the top of the stack
- * line_number: instruction line number
+ * @line_number: instruction line number
  * Return: nothing
 */
 
@@ -58,7 +55,7 @@ void pall(stack_t **stack, unsigned int line_number)
 	temp = *stack;
 	if (temp == NULL)
 		return;
-	
+
 	while (temp)
 	{
 		printf("%d\n", temp->n);
@@ -70,7 +67,7 @@ void pall(stack_t **stack, unsigned int line_number)
 /**
  * pint - prints the value at the top of the stack
  * @stack: pointer to the top of the stack
- * line_number: instruction line number
+ * @line_number: instruction line number
  * Return: nothing
 */
 void pint(stack_t **stack, unsigned int line_number)
@@ -81,13 +78,13 @@ void pint(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	printf("%d\n",(*stack)->n);
+	printf("%d\n", (*stack)->n);
 }
 
 /**
  * pop - removes the top element of the stack
  * @stack: pointer to the top of the stack
- * line_number: instruction line number
+ * @line_number: instruction line number
  * Return: nothing
 */
 void pop(stack_t **stack, unsigned int line_number)
@@ -109,7 +106,7 @@ void pop(stack_t **stack, unsigned int line_number)
 /**
  * swap - swaps the top 2 elements of the stack
  * @stack: pointer to the top of the stack
- * line_number: instruction line number
+ * @line_number: instruction line number
  * Return: nothing
 */
 void swap(stack_t **stack, unsigned int line_number)
@@ -129,5 +126,4 @@ void swap(stack_t **stack, unsigned int line_number)
 	prev->next = NULL;
 	prev->prev = *stack;
 	(*stack) = prev;
-	
 }
