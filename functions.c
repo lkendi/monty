@@ -104,26 +104,13 @@ void pop(stack_t **stack, unsigned int line_number)
 
 
 /**
- * swap - swaps the top 2 elements of the stack
+ * nop - does nothing
  * @stack: pointer to the top of the stack
  * @line_number: instruction line number
- * Return: nothing
 */
-void swap(stack_t **stack, unsigned int line_number)
+void nop(stack_t **stack, unsigned int line_number)
 {
-	stack_t *prev;
-
-	if (*stack == NULL || (*stack)->next == NULL)
-	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-
-	prev = (*stack)->prev;
-	prev->prev->next = *stack;
-	(*stack)->prev = prev->prev;
-	(*stack)->next = prev;
-	prev->next = NULL;
-	prev->prev = *stack;
-	(*stack) = prev;
+	(void)stack;
+	(void)line_number;
+	return;
 }
