@@ -9,7 +9,7 @@
 int main(int argc, char **argv)
 {
 	FILE *file;
-	char argument[BUFFER_SIZE]; 
+	char argument[BUFFER_SIZE];
 
 	if (argc != 2)
 	{

@@ -13,7 +13,7 @@ instruction_t *get_instruction(char *opcode,
 	int i = 0;
 	static instruction_t instructions[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint},
-		{"pop", pop}, {"swap", swap}, {"add", add}, 
+		{"pop", pop}, {"swap", swap}, {"add", add},
 		{"nop", nop}, {NULL, NULL}
 	};
 
@@ -41,10 +41,11 @@ char *_strdup(const char *str)
 {
 	size_t len = strlen(str) + 1;
 	char *copy = malloc(len);
+
 	if (copy == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	return memcpy(copy, str, len);
+	return (memcpy(copy, str, len));
 }
