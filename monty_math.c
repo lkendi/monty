@@ -1,30 +1,4 @@
 #include "monty.h"
-/**
- * swap - swaps the top 2 elements of the stack
- * @stack: pointer to pointer to the top of the stack
- * @line_number: instruction line number
- * Return: nothing
-*/
-
-void swap(stack_t **stack, unsigned int line_number)
-{
-	stack_t *temp;
-
-	if (*stack == NULL || (*stack)->next == NULL)
-	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-
-	temp = (*stack)->next;
-	(*stack)->next = temp->next;
-	if (temp->next != NULL)
-		temp->next->prev = *stack;
-	temp->prev = NULL;
-	(*stack)->prev = temp;
-	temp->next = *stack;
-	*stack = temp;
-}
 
 /**
  * add - adds the top 2 elements of the stack
@@ -70,7 +44,8 @@ void sub(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * div - divides the second top element of the stack by the top element of the stack
+ * _div - divides the second top element of the stack
+ * by the top element of the stack
  * @stack: pointer to pointer to the top of the stack
  * @line_number: instruction line number
  * Return: nothing
@@ -96,7 +71,8 @@ void _div(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * mul - divides the second top element of the stack by the top element of the stack
+ * mul - divides the second top element of the stack
+ * by the top element of the stack
  * @stack: pointer to pointer to the top of the stack
  * @line_number: instruction line number
  * Return: nothing
@@ -117,7 +93,8 @@ void mul(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * mod - computes the rest of the division of the second top element of the stack by the top element of the stack.
+ * mod - computes the rest of the division of the second top element
+ * of the stack by the top element of the stack.
  * @stack: pointer to pointer to the top of the stack
  * @line_number: instruction line number
  * Return: nothing
