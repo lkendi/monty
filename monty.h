@@ -47,12 +47,14 @@ void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
-void monty(FILE *file, char *argument);
+void monty(FILE *file);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 char *_strdup(const char *str);
+char *get_argument(char *instruction);
 
 
 /*GLOBAL VARIABLES*/
 extern const instruction_t instructions[];
+extern int push_argument;
 #endif

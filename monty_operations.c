@@ -1,13 +1,14 @@
 #include "monty.h"
 /**
  * swap - swaps the top 2 elements of the stack
- * @stack: pointer to the top of the stack
+ * @stack: pointer to pointer to the top of the stack
  * @line_number: instruction line number
  * Return: nothing
 */
+
 void swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *prev;
+	stack_t *temp;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
@@ -15,24 +16,26 @@ void swap(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	prev = (*stack)->prev;
-	prev->prev->next = *stack;
-	(*stack)->prev = prev->prev;
-	(*stack)->next = prev;
-	prev->next = NULL;
-	prev->prev = *stack;
-	(*stack) = prev;
+	temp = (*stack)->next;
+	(*stack)->next = temp->next;
+	if (temp->next != NULL)
+		temp->next->prev = *stack;
+	temp->prev = NULL;
+	(*stack)->prev = temp;
+	temp->next = *stack;
+	*stack = temp;
 }
 
 /**
  * add - adds the top 2 elements of the stack
- * @stack: pointer to the top of the stack
+ * @stack: pointer to pointer to the top of the stack
  * @line_number: instruction line number
- * Return: sum of the top 2 elements
+ * Return: nothing
 */
+
 void add(stack_t **stack, unsigned int line_number)
 {
-	stack_t *prev;
+	stack_t *temp;
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
@@ -40,6 +43,7 @@ void add(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	prev = (*stack)->prev;
-	printf("%d\n", prev->n + (*stack)->n);
+	temp = (*stack)->next;
+	temp->n += (*stack)->n;
+	pop(stack, line_number);
 }
