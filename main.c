@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 	}
 	file = fopen(argv[1], "r");
 	if (!file)
-		print_fopen_error(file);
+		print_fopen_error(argv[1]);
 	while (fgets(file_contents, BUFFER_SIZE, file) != NULL)
 	{
 		if (file_contents[0] == '\n' || file_contents[0] == '\0')
